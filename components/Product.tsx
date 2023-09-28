@@ -1,11 +1,28 @@
+import Link from "next/link";
+import { ProductImage } from "./ProductImage";
+
 type ProductProps = {
   product: Product;
 };
 
 export const Product = ({ product }: ProductProps) => {
   return (
-    <div key={product.id}>
-      <h1>{product.title}</h1>
-    </div>
+    <Link
+      prefetch={false}
+      href={`/product/${product.id}`}
+      className="h-96 flex flex-col p-5 rounded border group hover:scale-105 transition-transform ease-out duration-200"
+    >
+      <div>
+        <ProductImage product={product} fill={fill} />
+      </div>
+      <div className="flex items-center justify-between mt-4 mb-1 font-semibold">
+        <p className="w-44 truncate">{product.title}</p>
+        <p>${product.price}</p>
+      </div>
+
+      <p className=" italic text-xs w-64 line-clamp-2 text-gray-600">
+        {product.description}
+      </p>
+    </Link>
   );
 };
