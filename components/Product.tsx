@@ -12,7 +12,7 @@ export const Product = ({ product }: ProductProps) => {
       href={`/product/${product.id}`}
       className="h-96 flex flex-col p-5 rounded border group hover:scale-105 transition-transform ease-out duration-200"
     >
-      <div>
+      <div className=" relative max-h-72 flex-1">
         <ProductImage product={product} fill />
       </div>
       <div className="flex items-center justify-between mt-4 mb-1 font-semibold">
