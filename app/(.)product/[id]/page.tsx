@@ -1,10 +1,14 @@
 "use client";
 
 import { Dialog } from "@headlessui/react";
-import { useState } from "react";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(true);
+  const id = useParams().id;
+
+  useEffect(() => {}, []);
 
   return (
     <Dialog
@@ -15,9 +19,7 @@ export default function Modal() {
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
       <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-        <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
-          <Dialog.Title>Complete your order</Dialog.Title>
-        </Dialog.Panel>
+        <Dialog.Panel className="mx-auto max-w-3xl rounded bg-white p-10"></Dialog.Panel>
       </div>
     </Dialog>
   );
