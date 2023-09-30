@@ -6,9 +6,19 @@ import { useEffect, useState } from "react";
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(true);
+  const [product, setProduct] = useState<Product>();
+
   const id = useParams().id;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function fetchProduct() {
+      const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const product = await res.json();
+      console.log(product);
+    }
+
+    fetchProduct();
+  }, [id]);
 
   return (
     <Dialog
