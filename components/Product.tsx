@@ -8,7 +8,6 @@ type ProductProps = {
 export const Product = ({ product }: ProductProps) => {
   return (
     <Link
-      // prefetch={false}
       href={`/product/${product.id}`}
       className="h-96 flex flex-col p-5 rounded border group hover:scale-105 transition-transform ease-out duration-200"
     >
