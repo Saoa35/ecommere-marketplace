@@ -4,6 +4,7 @@ import { ProductImage } from "@/components/ProductImage";
 import { Dialog } from "@headlessui/react";
 import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -28,7 +29,10 @@ export default function Modal() {
   return (
     <Dialog
       open={isOpen}
-      onClose={() => setIsOpen(false)}
+      onClose={() => {
+        setIsOpen(false);
+        router.back();
+      }}
       className="relative z-50"
     >
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
@@ -73,9 +77,11 @@ export default function Modal() {
                     </div>
                   )}
 
-                  <p className="text-blue-600 hover:underline cursor-pointer text-xs">
-                    See all {product?.rating.count} reviews
-                  </p>
+                  <Link href="/">
+                    <p className="text-blue-600 hover:underline cursor-pointer text-xs">
+                      See all {product?.rating.count} reviews
+                    </p>
+                  </Link>
                 </div>
 
                 <p className="line-clamp-5 text-sm">{product?.description}</p>
@@ -86,7 +92,7 @@ export default function Modal() {
                   Add to bag
                 </button>
                 <button
-                  // onClick={() => router.push(`/product/${product?.id}`)}
+                  onClick={() => window.location.reload()}
                   className="button w-full bg-transparent border-green-600 hover:bg-green-600  hover:text-white hover:border-transparent"
                 >
                   View full details
